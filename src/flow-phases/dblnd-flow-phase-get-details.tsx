@@ -1,5 +1,5 @@
-import {ErrorMessage, Field, Form, Formik, FormikHelpers} from 'formik';
-import React, {useContext, useState} from 'react';
+import {ErrorMessage, Field, Form, Formik, FormikHelpers, useFormikContext} from 'formik';
+import React, {useContext, useEffect, useState} from 'react';
 import {phaseContext} from '../App';
 import {BackButton} from '../shared-components/back-button';
 import {DblndFlowPhaseArrangeWorkspace} from './dblnd-flow-phase-arrange-workspace';
@@ -19,6 +19,15 @@ interface FormValues {
   pillContainerSize: number;
 }
 
+// eslint-disable-next-line require-jsdoc
+function AutoSubmit(props:any): any {
+  const formik = useFormikContext();
+  useEffect(() => {
+    formik.submitForm();
+  }, [formik.values]);
+  return <div></div>;
+}
+
 /** Get Details Phase Component, form inputs to design experiment
  *
  * @param props empty props
@@ -30,6 +39,7 @@ export function DblndFlowPhaseGetDetails(props: DblndFlowPhaseGetDetailsProps): 
   const [numTreatment, setNumTreatment] = useState(7);
   const [numControl, setNumControl] = useState(7);
   const [validated, setValidated] = useState(false);
+
   return (
     <>
       <BackButton onclick={back} styleclass='experimenterstyle'
@@ -66,6 +76,9 @@ export function DblndFlowPhaseGetDetails(props: DblndFlowPhaseGetDetailsProps): 
             } else {
               errors.pillContainerSize = 'Values over 31 not allowed';
             }
+            if (Object.keys(errors).length > 0) {
+              setValidated(false);
+            }
             return errors;
           }}
           validateOnChange={true}
@@ -78,30 +91,28 @@ export function DblndFlowPhaseGetDetails(props: DblndFlowPhaseGetDetailsProps): 
           }}>
           {({isSubmitting}) => (
             <Form>
+              <AutoSubmit />
               <label htmlFor="nameOfExperiment"><span>Name of Experiment</span>
-                <Field id="nameOfExperiment" name="nameOfExperiment" disabled={validated} />
+                <Field id="nameOfExperiment" name="nameOfExperiment" />
                 <ErrorMessage name="nameOfExperiment" component="div" className="formerror" />
               </label>
               <label htmlFor="controlCount"><span>Number of Control Pills</span>
                 <Field id="controlCount" name="controlCount"
-                  disabled={validated} type="number" />
+                  type="number" />
                 <ErrorMessage name="controlCount" component="div" className="formerror" />
               </label>
               <label htmlFor="treatmentCount"><span>Number of Treatment Pills</span>
                 <Field id="treatmentCount" name="treatmentCount"
-                  disabled={validated} type="number" />
+                  type="number" />
                 <ErrorMessage name="treatmentCount" component="div" className="formerror" />
               </label>
               <label htmlFor="pillContainerSize"><span>Size of Pill Containers</span>
                 <Field id="pillContainerSize" name="pillContainerSize"
-                  disabled={validated} type="number" />
+                  type="number" />
                 <ErrorMessage name="pillContainerSize" component="div" className="formerror" />
               </label>
               <div className="formsubmit">
-                <button
-                  disabled={isSubmitting || validated}
-                  type="submit">Validate</button>
-                <span hidden={!validated}>✔️</span>
+                <span>Valid:{validated ? '✔️' : '❌'}</span>
               </div>
             </Form>
           )}
