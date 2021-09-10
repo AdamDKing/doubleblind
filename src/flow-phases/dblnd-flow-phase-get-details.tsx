@@ -36,8 +36,8 @@ function AutoSubmit(props:any): any {
 export function DblndFlowPhaseGetDetails(props: DblndFlowPhaseGetDetailsProps): JSX.Element {
   const {next, back} = useContext(phaseContext);
   const [pcSize, setPcSize] = useState(7);
-  const [numTreatment, setNumTreatment] = useState(7);
-  const [numControl, setNumControl] = useState(7);
+  const [numTreatment, setNumTreatment] = useState(10);
+  const [numControl, setNumControl] = useState(10);
   const [validated, setValidated] = useState(false);
 
   return (
@@ -49,8 +49,8 @@ export function DblndFlowPhaseGetDetails(props: DblndFlowPhaseGetDetailsProps): 
         <Formik
           initialValues={{
             nameOfExperiment: 'My Experiment',
-            controlCount: 7,
-            treatmentCount: 7,
+            controlCount: 10,
+            treatmentCount: 10,
             pillContainerSize: 7,
           }}
           validate={(values: FormValues) => {
