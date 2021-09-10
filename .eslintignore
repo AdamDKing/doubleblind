@@ -1,10 +1,6 @@
-dblnd-flow.tsx
 dblnd-maths.ts
 file-downloader.tsx
 index.tsx
-input.tsx
-pill-containers.tsx
-pillcell.tsx
 react-app-env.d.ts
 serviceWorker.ts
 App.tsx
