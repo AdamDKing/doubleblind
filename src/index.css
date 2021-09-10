@@ -68,6 +68,18 @@ code {
   justify-self: center;
 }
 
+.forwardstop {
+  background-image: url('./shared-components/buttonstop.png');
+  background-size: 110px 110px;
+  opacity: 0.25;
+  grid-column-start: 3;
+  grid-row-start: 2;
+  height:110px;
+  width:110px;
+  align-self: center;
+  justify-self: center;
+}
+
 .guardMessage {
   color:black;
   font-size: small;

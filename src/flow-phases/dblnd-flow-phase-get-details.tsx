@@ -122,12 +122,13 @@ export function DblndFlowPhaseGetDetails(props: DblndFlowPhaseGetDetailsProps): 
       </div>
 
       <ForwardButton styleclass='experimenterstyle' onclick={() => {
-        validated ?
+        if (validated) {
           next(<DblndFlowPhaseArrangeWorkspace
             dblnd={generateDblnd(numControl, numTreatment)}
-            pcSize={pcSize}/>) :
-          alert('not validated');
+            pcSize={pcSize}/>);
+        }
       }} />
+      <div className="forwardstop" hidden={validated}></div>
     </>
   );
 }
