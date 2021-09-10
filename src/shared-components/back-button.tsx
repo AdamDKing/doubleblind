@@ -11,22 +11,30 @@ interface BackButtonProps {
  */
 export function BackButton(props: BackButtonProps): JSX.Element {
   const [backguardHidden, setBackguardHidden] = useState(!props.backguard);
+  const [guardMsgHidden, setGuardMsgHidden] = useState(true);
+  const guardMsgTimeout = () => {
+    setTimeout(() => {
+      setGuardMsgHidden(true);
+    }, 5000);
+  };
   return (
     <>
       <button
         className={'backbutton ' + props.styleclass}
         onClick={props.onclick}
-      >Prior phase &lt;</button>
+      >Prior phase &lt;
+        <div className="guardMessage" hidden={guardMsgHidden}>{props.backguard}</div>
+      </button>
       <div className="backguard" hidden={backguardHidden}
         onClick={(e) => {
-          alert(props.backguard);
           e.stopPropagation();
           setBackguardHidden(true);
+          setGuardMsgHidden(false);
+          guardMsgTimeout();
         }}
       >
-        <div hidden={backguardHidden}></div>
       </div>
-      <div className="backguardMessage">{props.backguard}</div>
+
     </>
   );
 }

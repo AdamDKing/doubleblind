@@ -57,14 +57,39 @@ code {
 }
 
 .backguard {
-  border-color: rgba(122, 122, 122, 0.459);
-  border-radius: 10px;
+  background-image: url('./shared-components/buttonguard.png');
+  background-size: 110px 110px;
+  opacity: 0.25;
   grid-column-start: 1;
   grid-row-start: 2;
-  height:100px;
-  width:100px;
+  height:110px;
+  width:110px;
   align-self: center;
   justify-self: center;
+}
+
+.guardMessage {
+  color:black;
+  font-size: small;
+  position: relative;
+  top: 20px;
+  right: 50px;
+  width: 150px;
+  border: 2px solid gray;
+  border-radius: 5px;
+  padding: 5px;
+  background-color: white;
+}
+.guardMessage:before {
+  content : " ";
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 10px solid #646464;
+  position:absolute;
+  top:-10px;
+  left:60px;
 }
 
 .forwardbutton {
