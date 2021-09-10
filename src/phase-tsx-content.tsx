@@ -27,7 +27,7 @@ export function getPhaseTsxContent(phase: PHASES): JSX.Element {
             To run a double-blind placebo-controlled experiment,
              you will need to start with some offline work.
              Guides can be found across the web, but
-             A short rundown follows:
+             a short rundown follows:
           </p>
           <p>
             You will need to fill two sets of indistinguishable capsules:
@@ -42,7 +42,7 @@ export function getPhaseTsxContent(phase: PHASES): JSX.Element {
              of the randomization without communcating.
              At the end of this process, you'll download a key
              that will let you know the real contents for each capsule --
-             make sure not to check it until your experiment is done!
+             make sure not to check it until your experiment is done.
           </p>
           <h3>
             What you will need before proceeding:
@@ -62,7 +62,7 @@ export function getPhaseTsxContent(phase: PHASES): JSX.Element {
             </li>
             <li>
               <p>
-                A helper!  This site will do its best to guide the helper
+                A helper.  This site will do its best to guide your helper
                  through their part of the process.
                  They will only need to carefully follow instructions.
               </p>
@@ -111,7 +111,7 @@ export function getPhaseTsxContent(phase: PHASES): JSX.Element {
             Now it's time to pass things off to your helper.
              You'll want to call them and and leave the room before they
              start on the next phase.  When the helper is sitting at
-             the computer and the user has left, click "Next phase"
+             the computer and the user has left, click <em>Next phase</em>
           </p>
         </>
       );
@@ -131,7 +131,7 @@ export function getPhaseTsxContent(phase: PHASES): JSX.Element {
              space.
           </p>
           <p>
-             When you're ready to see which capsules go where, click "Next Phase"
+             When you're ready to see which capsules go where, click <em>Next phase</em>
           </p>
         </>
       );
@@ -153,16 +153,16 @@ export function getPhaseTsxContent(phase: PHASES): JSX.Element {
           </h1>
           <p>
             OK, thanks again for your help!  The only thing left for you
-             to do is to *not* reveal any information about your part
+             to do is to <b>not</b> reveal any information about your part
              of the double-blinding
              to the person you're helping.  You can go ahead and have them
-             come back -- they still have more work to do with these
+             come back since they still have more work to do with these
              capulses.  You'll need to leave
              the room again before they get started.
           </p>
           <p>
              When the user is sitting at the computer and
-             the helper has left, click "Next Phase"
+             the helper has left, click <em>Next phase</em>
           </p>
         </>
       );
@@ -174,17 +174,17 @@ export function getPhaseTsxContent(phase: PHASES): JSX.Element {
             Experimenter Instructions
           </h1>
           <p>
-            Welcome back! You should have filled pill containers in front of you.
-             Your helper filled them using the two piles/containers you left.
-             Now you're going to shuffle them, so that neither you nor your
-             helper knows which capsules are treatment and which are control.
+            Welcome back. You should have filled pill containers in front of you.
+             Your helper filled them,
+             now you're going to shuffle them.  At the end, neither you nor your
+             helper will know which capsules are treatment and which are control.
              In the next phase you'll see a diagram showing you which capsules to swap.
              You can press space or use the arrow keys to advances steps.
              Be sure to swap the capsules
-             in the order provided, and you might want to get some tweezers.
+             in the order provided.
           </p>
           <p>
-            When you're ready to start swapping capsules, click "Next Phase"
+            When you're ready to start swapping capsules, click <em>Next phase</em>
           </p>
         </>
       );
@@ -207,9 +207,9 @@ export function getPhaseTsxContent(phase: PHASES): JSX.Element {
              Don't open it until you're done with your experiment.
              It will tell you which pills were in fact treatment
              and which were control.  The double-blinding process is done, but
-             I'd appreciate it if you clicked "Next Phase" to provide any
-             feedback on this website/the process, since it's very much
-             a work in progress.  Cheers!
+             I'd appreciate it if you clicked <em>Next phase</em> to provide any
+             feedback on this website, since it's very much
+             a work in progress.
           </p>
         </>
       );
