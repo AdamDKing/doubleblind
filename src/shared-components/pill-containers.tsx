@@ -55,7 +55,7 @@ export function PillContainers(props: IPillContainersProps): JSX.Element {
               return (
                 <div
                   className="pillweek"
-                  style={{width: `${props.containerSize*64}px`}}
+                  style={{width: `${props.containerSize*64-1}px`}}
                   key={container}
                 >
                   {pillCells.slice(container*props.containerSize,

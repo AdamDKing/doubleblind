@@ -33,6 +33,7 @@ export function BackButton(props: BackButtonProps): JSX.Element {
       <button
         className={'backbutton ' + props.styleclass}
         onClick={props.onclick}
+        disabled={!backguardHidden}
       >Prior phase &lt;
         <div className="guardMessage" hidden={guardMsgHidden}>{props.backguard}</div>
       </button>

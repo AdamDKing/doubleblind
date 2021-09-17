@@ -147,55 +147,88 @@ code {
   visibility: hidden;
 }
 
-.pillcell {
-  height: 72px;
-  width: 60px;
-  border-bottom: 4px solid gray;
-  border-top: 2px solid gray;
-  border-left: 2px solid gray;
-  border-right: 2px solid gray;
-  border-bottom-right-radius: 15px;
-  border-bottom-left-radius: 15px;
-  display: inline-block;
-}
 
-.pillweek {
-  height: 70px;
-  width: 448px;
-  background-color: rgb(223, 223, 223);
-  border-bottom: 4px solid gray;
-  border-top: 2px solid gray;
-  border-left: 2px solid gray;
-  border-right: 2px solid gray;
-  border-radius: 5px;
-  margin: 5px;
-  /* box-shadow: 5px 5px rgb(58, 58, 58); */
-}
 
-.pillcontainers {
-  display:inline-block;
-  position: relative;
-}
 
-.pillcontainers>.pillweeks, .pillcontainers>canvas {
-  position: absolute;
-}
-
-label {
-  display: block;
-  margin: 5px;
-}
-
-label > span {
-  float: left;
-  width: 250px;
-}
-
-.formerror {
-  color: red;
-  margin-left: 255px;
-}
-
-.formsubmit {
-  margin-left: 255px;
+@media only screen and (max-width: 600px) {
+  #root {
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 90% 10%;
+  }
+  .frame {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: 1;
+  }
+  .backbutton {
+    grid-column-start: 1;
+    grid-row-start: 2;
+  }
+  .forwardbutton {
+    grid-column-start: 2;
+    grid-row-start: 2;
+  }
+  .forwardbutton, .backbutton {
+    height: 100%;
+    width: 100%;
+    background-color: white;
+    border-style: solid;
+    border-width: 6px;
+    border-color: black;
+    border-radius: 10px;
+    color: black;
+    font-size: large;
+    align-self: center;
+    justify-self: center;
+  }
+  .backguard {
+    background-image: url('./shared-components/buttonguard.png');
+    background-size: 110px 110px;
+    opacity: 0.25;
+    grid-column-start: 1;
+    grid-row-start: 2;
+    height:100%;
+    width:110px;
+    align-self: center;
+    justify-self: center;
+  }
+  
+  .forwardstop {
+    background-image: url('./shared-components/buttonstop.png');
+    background-size: 110px 110px;
+    opacity: 0.25;
+    grid-column-start: 3;
+    grid-row-start: 2;
+    height:110px;
+    width:110px;
+    align-self: center;
+    justify-self: center;
+  }
+  
+  .guardMessage {
+    color:black;
+    font-size: small;
+    position: relative;
+    top: -50px;
+    right: 50px;
+    width: 150px;
+    border: 2px solid gray;
+    border-radius: 5px;
+    padding: 5px;
+    background-color: white;
+  }
+  .guardMessage:before {
+    content : " ";
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid #646464;
+    position:absolute;
+    top:-10px;
+    left:60px;
+  }
+  
 }

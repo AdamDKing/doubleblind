@@ -111,7 +111,7 @@ export function DblndFlowPhaseGetDetails(props: DblndFlowPhaseGetDetailsProps): 
                   type="number" />
                 <ErrorMessage name="pillContainerSize" component="div" className="formerror" />
               </label>
-              <div className="formsubmit">
+              <div className="formisvalid">
                 <span>Valid:{validated ? '✔️' : '❌'}</span>
               </div>
             </Form>
@@ -128,7 +128,8 @@ export function DblndFlowPhaseGetDetails(props: DblndFlowPhaseGetDetailsProps): 
             pcSize={pcSize}/>);
         }
       }} />
-      <div className="forwardstop" hidden={validated}></div>
+      <div className="forwardstop"
+        style={{visibility: validated ? 'hidden' : 'visible'}}></div>
     </>
   );
 }

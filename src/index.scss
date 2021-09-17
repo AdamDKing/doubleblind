@@ -1,0 +1,191 @@
+@import './pills.scss';
+
+html {
+  height: 100vh;
+  margin: 0;
+}
+
+body {
+  margin: 0;
+  Font-Family: 'Cabin', Sans-Serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: mintcream;
+
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+#root {
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 90% 10%;
+}
+
+.frame {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  grid-row-start: 1;
+  background-color: gainsboro;
+  padding: 5px;
+  overflow: auto;
+  &.experimenterstyle {
+    background-color: rgb(206, 239, 250);
+  }
+  &.helperstyle {
+    background-color: rgb(248, 201, 170);
+  }
+  &.helperexperimenter {
+    background-image: linear-gradient(to bottom right, rgb(248, 201, 170), rgb(206, 239, 250));
+  }
+  &.experimenterhelper {
+    background-image: linear-gradient(to bottom right, rgb(206, 239, 250), rgb(248, 201, 170));
+  }
+}
+
+.backbutton, .forwardbutton {
+  position: relative;
+  width: 90%;
+  max-width: 25rem;
+  min-height: 2rem;
+  height: 80%;
+  background-color: white;
+  border-style: solid;
+  border-width: 6px;
+  border-color: black;
+  border-radius: 10px;
+  color: black;
+  font-size: large;
+  align-self: center;
+  justify-self: center;
+
+  &.helperstyle {
+    border-color: darkorange;
+    color: darkorange;
+  }
+  &.helperstyle:hover:enabled {
+    border-color: rgb(167, 92, 1);
+    color: rgb(167, 92, 1);
+  }
+  &.experimenterstyle {
+    border-color: blue;
+    color: blue;
+  }
+  &.experimenterstyle:hover:enabled {
+    border-color: darkblue;
+    color: darkblue;
+  }
+}
+
+.backbutton {
+  grid-column: 1;
+  grid-row: 2;
+}
+.forwardbutton {
+  grid-column: 2;
+  grid-row: 2;
+}
+
+.backguard {
+  background-image: url('./shared-components/buttonguard.png');
+  background-size: 100% 100%;
+  opacity: 0.4;
+  grid-column-start: 1;
+  grid-row-start: 2;
+  height: 90%;
+  width:50%;
+  max-width: 10rem;
+  align-self: center;
+  justify-self: center;
+}
+
+.forwardstop {
+  background-image: url('./shared-components/buttonstop.png');
+  background-size: 100% 100%;
+  opacity: 0.4;
+  grid-column-start: 2;
+  grid-row-start: 2;
+  height: 90%;
+  width:50%;
+  max-width: 10rem;
+  align-self: center;
+  justify-self: center;
+  visibility: hidden;
+}
+
+.guardMessage {
+  color:black;
+  font-size: small;
+  text-align: center;
+  position: absolute;
+  width: 150px;
+  border: 2px solid gray;
+  border-radius: 5px;
+  padding: 5px;
+  background-color: white;
+  bottom: 120%;
+  left: 50%;
+  margin-left: -75px;
+}
+
+.guardMessage:before {
+  content : " ";
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid #646464;
+  position:absolute;
+  bottom:-11px;
+  left:50%;
+}
+
+h1, h2, h3, h4 ,h5, h6 {
+  Font-Family: 'Roboto Condensed', Sans-Serif;
+}
+
+h1 {
+  font-size: 2.25rem;
+  line-height: 2.15rem;
+}
+
+h3 {
+  font-size: 1.55rem;
+  line-height: 1.5rem;
+}
+
+p {
+  Font-Size: 1.1rem;
+  line-height: 2rem;
+}
+
+em {
+  font-style: normal;
+  font-weight: 700;
+}
+
+label {
+  display: block;
+  margin: 5px;
+}
+
+label > span {
+  float: left;
+  min-width: 250px;
+}
+
+.formerror {
+  color: red;
+  max-width: 26rem;
+  text-align: right;
+}
+
+.formisvalid {
+  max-width: 19.5rem;
+  text-align: right;
+}
+

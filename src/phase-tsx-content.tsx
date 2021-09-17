@@ -17,12 +17,8 @@ export function getPhaseTsxContent(phase: PHASES): JSX.Element {
       return (
         <>
           <h1>
-            Welcome!
+            Easily run double-blinded experiments
           </h1>
-          <h2>
-            This website is a tool that makes it easy
-             to set up double-blinded experiments
-          </h2>
           <p>
             To run a double-blind placebo-controlled experiment,
              you will need to start with some offline work.
@@ -69,7 +65,7 @@ export function getPhaseTsxContent(phase: PHASES): JSX.Element {
             </li>
           </ul>
           <h3>
-            When you're ready, click <em>Next phase</em>
+            When you're ready to get started, click <em>Next phase</em>
           </h3>
         </>
       );
@@ -85,6 +81,9 @@ export function getPhaseTsxContent(phase: PHASES): JSX.Element {
              since we'll use the diagram to show where pills should be placed/swapped later.
              The dark gray cells are unused.
           </p>
+          <h3>
+            Details Form
+          </h3>
         </>
       );
     }
