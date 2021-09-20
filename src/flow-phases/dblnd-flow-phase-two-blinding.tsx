@@ -61,9 +61,12 @@ export function DblndFlowPhaseTwoBlinding(
           size={props.dblnd.helperSchedule.length}
           arrow={arrow} />
       </div>
-      <ForwardButton styleclass='experimenterstyle' onclick={() =>
-        next(<DblndFlowPhaseFileDownload {...props}/>)
-      } />
+      <ForwardButton
+        styleclass='experimenterstyle'
+        stop={step !== filteredSteps.length-1}
+        onclick={() =>
+          next(<DblndFlowPhaseFileDownload {...props}/>)
+        } />
     </>
   );
 }
