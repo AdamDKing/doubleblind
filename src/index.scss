@@ -7,11 +7,11 @@ html {
 
 body {
   margin: 0;
-  Font-Family: 'Cabin', Sans-Serif;
+  font-family: 'Cabin', Sans-Serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: mintcream;
-
+  color: rgb(60,60,60);
 }
 
 code {
@@ -22,7 +22,7 @@ code {
 #root {
   height: 100vh;
   display: grid;
-  grid-template-rows:5% 95%;
+  grid-template-rows:4% 96%;
 }
 
 header {
@@ -30,7 +30,25 @@ header {
   min-height: 2.25rem;
   background-color: mintcream;
   z-index: 999;
+  color:darkblue;
+}
 
+.logo {
+  font-family: 'Work Sans', sans-serif;
+  font-size: 2rem;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 5px 10px;
+}
+
+.unselectable {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 .dblndapp {
@@ -160,10 +178,7 @@ header {
 
 h1, h2, h3, h4 ,h5, h6 {
   font-family: 'Roboto Condensed', Sans-Serif;
-}
-
-.logo {
-  font-family: 'Work Sans', sans-serif;
+  color:rgb(40, 40, 40);
 }
 
 button {
@@ -183,6 +198,7 @@ h3 {
 p {
   Font-Size: 1.1rem;
   line-height: 2rem;
+  padding-left: 1rem;
 }
 
 em {

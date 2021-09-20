@@ -67,6 +67,9 @@ function App() {
   return (
     <>
       <header>
+        <div className="logo unselectable">
+          doubleblind.me
+        </div>
 
       </header>
       <div className="dblndapp">
