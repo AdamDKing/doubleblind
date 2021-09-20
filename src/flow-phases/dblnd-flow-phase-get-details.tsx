@@ -121,14 +121,17 @@ export function DblndFlowPhaseGetDetails(props: DblndFlowPhaseGetDetailsProps): 
         <PillContainers containerSize={pcSize} size={numTreatment + numControl} />
       </div>
 
-      <ForwardButton styleclass='experimenterstyle' onclick={() => {
-        if (validated) {
-          next(<DblndFlowPhaseArrangeWorkspace
-            dblnd={generateDblnd(numControl, numTreatment)}
-            pcSize={pcSize}/>);
-        }
-      }} />
-      {validated ? '' : <div className="forwardstop"></div> }
+      <ForwardButton
+        styleclass='experimenterstyle'
+        stop={!validated}
+        onclick={() => {
+          if (validated) {
+            next(<DblndFlowPhaseArrangeWorkspace
+              dblnd={generateDblnd(numControl, numTreatment)}
+              pcSize={pcSize}/>);
+          }
+        }} />
+
     </>
   );
 }
