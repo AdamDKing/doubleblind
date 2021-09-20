@@ -68,7 +68,7 @@ function App() {
     <>
       <header>
         <div className="logo unselectable">
-          doubleblind.me
+          double<span>blind</span>.me
         </div>
 
       </header>
