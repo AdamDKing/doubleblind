@@ -38,7 +38,7 @@ export function DblndFlowPhaseGetDetails(props: DblndFlowPhaseGetDetailsProps): 
   const [pcSize, setPcSize] = useState(7);
   const [numTreatment, setNumTreatment] = useState(10);
   const [numControl, setNumControl] = useState(10);
-  const [validated, setValidated] = useState(false);
+  const [validated, setValidated] = useState(true);
 
   return (
     <>
@@ -128,8 +128,7 @@ export function DblndFlowPhaseGetDetails(props: DblndFlowPhaseGetDetailsProps): 
             pcSize={pcSize}/>);
         }
       }} />
-      <div className="forwardstop"
-        style={{visibility: validated ? 'hidden' : 'visible'}}></div>
+      {validated ? '' : <div className="forwardstop"></div> }
     </>
   );
 }

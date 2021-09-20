@@ -66,9 +66,15 @@ function App() {
 
   return (
     <>
-      <phaseContext.Provider value={{next: provideNextPhaseComponent, back: goBackPhaseComponent}}>
-        {activePhaseComponent}
-      </phaseContext.Provider>
+      <header>
+
+      </header>
+      <div className="dblndapp">
+        <phaseContext.Provider
+          value={{next: provideNextPhaseComponent, back: goBackPhaseComponent}}>
+          {activePhaseComponent}
+        </phaseContext.Provider>
+      </div>
     </>
   );
 }

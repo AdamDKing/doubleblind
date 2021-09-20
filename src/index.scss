@@ -22,6 +22,20 @@ code {
 #root {
   height: 100vh;
   display: grid;
+  grid-template-rows:5% 95%;
+}
+
+header {
+  grid-row: 1;
+  min-height: 2.25rem;
+  background-color: mintcream;
+  z-index: 999;
+
+}
+
+.dblndapp {
+  grid-row: 2;
+  display: grid;
   grid-template-columns: 50% 50%;
   grid-template-rows: 90% 10%;
 }
@@ -51,7 +65,7 @@ code {
   position: relative;
   width: 90%;
   max-width: 25rem;
-  min-height: 2rem;
+  min-height: 1.9rem;
   height: 80%;
   background-color: white;
   border-style: solid;
@@ -114,7 +128,6 @@ code {
   max-width: 10rem;
   align-self: center;
   justify-self: center;
-  visibility: hidden;
 }
 
 .guardMessage {
@@ -130,6 +143,7 @@ code {
   bottom: 120%;
   left: 50%;
   margin-left: -75px;
+  z-index: 999;
 }
 
 .guardMessage:before {
@@ -145,7 +159,15 @@ code {
 }
 
 h1, h2, h3, h4 ,h5, h6 {
-  Font-Family: 'Roboto Condensed', Sans-Serif;
+  font-family: 'Roboto Condensed', Sans-Serif;
+}
+
+.logo {
+  font-family: 'Work Sans', sans-serif;
+}
+
+button {
+  font-family: 'Cabin', Sans-Serif;
 }
 
 h1 {
