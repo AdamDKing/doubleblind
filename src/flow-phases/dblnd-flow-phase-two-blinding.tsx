@@ -33,6 +33,13 @@ export function DblndFlowPhaseTwoBlinding(
     }
   });
 
+  const inc = () => {
+    setStep((prior) => prior < filteredSteps.length-1 ? prior+1 : prior);
+  };
+  const dec = () => {
+    setStep((prior) => prior > 0 ? prior-1 : prior);
+  };
+
   return (
     <>
       <BackButton onclick={back} styleclass='experimenterstyle' />
@@ -40,10 +47,10 @@ export function DblndFlowPhaseTwoBlinding(
       <div className="frame experimenterstyle" style={{outline: 'none'}}
         tabIndex={-1} ref={frameRef} onKeyDown={(e) => {
           if (e.key === ' ' || e.key === 'ArrowRight') {
-            setStep((prior) => prior < filteredSteps.length-1 ? prior+1 : prior);
+            inc();
           }
           if (e.key === 'ArrowLeft') {
-            setStep((prior) => prior > 0 ? prior-1 : prior);
+            dec();
           }
         }}>
         {getPhaseTsxContent(PHASES.PHASE_TWO_BLINDING)}
@@ -56,6 +63,15 @@ export function DblndFlowPhaseTwoBlinding(
           {step === filteredSteps.length-1 ? '(Last) ' : ''}Step {step+1} :
            swap {filteredSteps[step].from+1} and {filteredSteps[step].to+1}
         </h3>
+        <div>
+          <button onClick={() => {
+            dec();
+          }}
+          className="stepButton">🠸</button>
+          <button onClick={() => {
+            inc();
+          }} className="stepButton">🠺</button>
+        </div>
         <PillContainers
           containerSize={props.pcSize}
           size={props.dblnd.helperSchedule.length}
