@@ -1,20 +1,67 @@
+// need to enforce this elsewhere -- so much easier!
+header * {
+  box-sizing: border-box;
+}
+
 header {
   grid-row: 1;
   min-height: 2.25rem;
   background-color: mintcream;
-  z-index: 999;
+  z-index: 998;
   color:darkblue;
+  display: grid;
+  grid-template-columns: 70% 30%;
+  position: relative;
 }
 
 .logo {
+  text-align: left;
   font-family: 'Work Sans', sans-serif;
   font-size: 2rem;
-  position: relative;
+  position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  padding: 5px 10px;
+  margin: 0rem 1rem;
+  // margin: 0rem 6rem 0rem 1rem;
+  padding: 0rem;
+  grid-column: 1;
 }
 
 .logo span {
   color: rgb(167, 92, 1);
+}
+
+nav {
+  grid-column: 2;
+}
+nav ul {
+  list-style: none;
+  margin: 0rem;
+  margin-right: 0.625rem;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  height: 300%;
+  @media only screen and (min-width: 700px) {
+    flex-direction: row;
+    height: 100%;
+    padding: 0rem;
+  }
+}
+
+nav li {
+  height: 90%;
+  background-color: mintcream;
+  position: relative;
+  padding: 0.5rem;
+  @media only screen and (min-width: 700px) {
+    width: 25%;
+  }
+}
+
+nav a {
+  position: absolute;
+  top: 60%;
+  transform: translateY(-50%);
 }

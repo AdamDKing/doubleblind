@@ -88,17 +88,9 @@ em {
   font-weight: 700;
 }
 
-@media only screen and (min-width: 1200px) {
+@media only screen and (min-width: 1000px) {
   #root {
     width: 1000px;
-    position:relative;
-    margin: auto;
-  }
-}
-
-@media only screen and (min-width: 2200px) {
-  #root {
-    width: 1600px;
     position:relative;
     margin: auto;
   }
