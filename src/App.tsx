@@ -46,7 +46,7 @@ function App() {
     };
   });
 
-  // two functions to pass down to children, used for onClicks
+  // two functions to pass down via context, used for onClicks
   const provideNextPhaseComponent = (component: JSX.Element) => {
     setActivePhaseComponent((oldAPC) => {
       setPriorPhaseComponents((oldPPC) =>
