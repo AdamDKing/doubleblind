@@ -13,8 +13,20 @@ export function Header(props: HeaderProps) {
   return (
     <header>
       <div className="logo unselectable">
-    double<span>blind</span>.me
+        double<span>blind</span>.me
       </div>
-
+      {/* <nav>
+        <ul>
+          <li>
+            Home
+          </li>
+          <li>
+            About
+          </li>
+          <li>
+            Offline Guide (soon!)
+          </li>
+        </ul>
+      </nav> */}
     </header>);
 }

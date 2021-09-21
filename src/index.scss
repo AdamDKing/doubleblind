@@ -245,3 +245,10 @@ label > span {
   }
 }
 
+@media only screen and (min-width: 2200px) {
+  #root {
+    width: 1600px;
+    position:relative;
+    margin: auto;
+  }
+}
