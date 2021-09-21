@@ -15,7 +15,7 @@ export function Header(props: HeaderProps) {
       <div className="logo unselectable">
         double<span>blind</span>.me
       </div>
-      {/* <nav>
+      <nav>
         <ul>
           <li>
             Home
@@ -27,6 +27,6 @@ export function Header(props: HeaderProps) {
             Offline Guide (soon!)
           </li>
         </ul>
-      </nav> */}
+      </nav>
     </header>);
 }

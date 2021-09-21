@@ -1,0 +1,20 @@
+label {
+  display: block;
+  margin: 5px;
+}
+
+label > span {
+  float: left;
+  min-width: 250px;
+}
+
+.formerror {
+  color: red;
+  max-width: 26rem;
+  text-align: right;
+}
+
+.formisvalid {
+  max-width: 19.5rem;
+  text-align: right;
+}
