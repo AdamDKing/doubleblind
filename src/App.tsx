@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {DblndFlow} from './layout-components/dblnd-flow';
 import {Header} from './layout-components/header';
 
@@ -24,17 +24,17 @@ function App() {
   // and make progress elsewhere.  Will return when it causes bugs.
 
 
-  const leavePageWarning = (e: BeforeUnloadEvent) => {
-    e.preventDefault();
-    e.returnValue = 'Are you sure you want to leave? All progress will be lost.';
-    return e.returnValue;
-  };
-  useEffect(() => {
-    window.addEventListener('beforeunload', leavePageWarning);
-    return () => {
-      window.removeEventListener('beforeunload', leavePageWarning);
-    };
-  });
+  // const leavePageWarning = (e: BeforeUnloadEvent) => {
+  //   e.preventDefault();
+  //   e.returnValue = 'Are you sure you want to leave? All progress will be lost.';
+  //   return e.returnValue;
+  // };
+  // useEffect(() => {
+  //   window.addEventListener('beforeunload', leavePageWarning);
+  //   return () => {
+  //     window.removeEventListener('beforeunload', leavePageWarning);
+  //   };
+  // });
 
   return (
     <>
