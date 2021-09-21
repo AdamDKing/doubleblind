@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {DblndFlowPhaseIntro} from './flow-phases/dblnd-flow-phase-intro';
 
 interface PhaseContext {
@@ -33,7 +33,17 @@ function App() {
   const [priorPhaseComponents, setPriorPhaseComponents] = useState<JSX.Element[]>([]);
   const [activePhaseComponent, setActivePhaseComponent] =
     useState<JSX.Element>();
-
+  const leavePageWarning = (e: BeforeUnloadEvent) => {
+    e.preventDefault();
+    e.returnValue = 'Are you sure you want to leave? All progress will be lost.';
+    return e.returnValue;
+  };
+  useEffect(() => {
+    window.addEventListener('beforeunload', leavePageWarning);
+    return () => {
+      window.removeEventListener('beforeunload', leavePageWarning);
+    };
+  });
 
   // two functions to pass down to children, used for onClicks
   const provideNextPhaseComponent = (component: JSX.Element) => {
