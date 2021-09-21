@@ -52,8 +52,7 @@ export function DblndFlowPhaseOneBlinding(
            pile in the highlighted cells.
         </h3>
         <p>
-          Press the spacebar to toggle, or click:
-          <button onClick={(e) => {
+          Press the spacebar to toggle, or click: <button onClick={(e) => {
             setPileRight((b) => !b);
           }}>Toggle</button>
         </p>

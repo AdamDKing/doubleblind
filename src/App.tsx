@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {DblndFlowPhaseIntro} from './flow-phases/dblnd-flow-phase-intro';
+import {Header} from './layout-components/header';
 
 interface PhaseContext {
   next: (component: JSX.Element) => void;
@@ -76,12 +77,7 @@ function App() {
 
   return (
     <>
-      <header>
-        <div className="logo unselectable">
-          double<span>blind</span>.me
-        </div>
-
-      </header>
+      <Header />
       <div className="dblndapp">
         <phaseContext.Provider
           value={{next: provideNextPhaseComponent, back: goBackPhaseComponent}}>
