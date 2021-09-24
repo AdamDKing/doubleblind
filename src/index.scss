@@ -22,6 +22,17 @@ body {
   height: 100vh;
   display: grid;
   grid-template-rows:4% 96%;
+  @media only screen and (min-width: 1000px) {
+    width: 1000px;
+    position:relative;
+    margin: auto;
+  }
+}
+
+.textpage {
+  grid-row: 2;
+  background-color: rgb(206, 239, 250);
+  padding: 5px;
 }
 
 .dblndapp {
@@ -86,12 +97,4 @@ p {
 em {
   font-style: normal;
   font-weight: 700;
-}
-
-@media only screen and (min-width: 1000px) {
-  #root {
-    width: 1000px;
-    position:relative;
-    margin: auto;
-  }
 }
