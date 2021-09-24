@@ -1,4 +1,5 @@
 import React from 'react';
+import {NavLink} from 'react-router-dom';
 
 interface HeaderProps {
 
@@ -15,24 +16,19 @@ export function Header(props: HeaderProps) {
       <div className="logo unselectable">
         double<span>blind</span>.me
       </div>
-      {/* <nav>
+      <nav>
         <ul>
           <li className="linkli">
-            <a>
-            home
-            </a>
+            <NavLink exact to="/" className="navlink" activeClassName="active">home</NavLink>
           </li>
           <li className="linkli">
-            <a>
-            guide
-            </a>
+            <NavLink to="/guide" className="navlink" activeClassName="active">
+              guide</NavLink>
           </li>
           <li className="linkli">
-            <a>
-            about
-            </a>
+            <NavLink to="/about" className="navlink" activeClassName="active">about</NavLink>
           </li>
         </ul>
-      </nav> */}
+      </nav>
     </header>);
 }

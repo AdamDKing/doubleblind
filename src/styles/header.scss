@@ -60,8 +60,15 @@ nav li {
   }
 }
 
-nav a {
+nav .navlink {
   position: absolute;
   top: 60%;
   transform: translateY(-50%);
+  text-decoration: none;
+}
+
+.navlink.active {
+  border-bottom: 0.15rem solid darkblue;
+  border-top: 0.15rem solid darkblue;
+  font-weight: 700;
 }
