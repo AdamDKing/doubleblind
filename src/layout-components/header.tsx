@@ -17,6 +17,8 @@ export function Header(props: HeaderProps) {
         double<span>blind</span>.me
       </div>
       <nav>
+        <label htmlFor="navtoggle" className="navtogglelabel unselectable">↕️</label>
+        <input id="navtoggle" className="navtoggle" type="checkbox"/>
         <ul>
           <li className="linkli">
             <NavLink exact to="/" className="navlink" activeClassName="active">home</NavLink>
@@ -29,6 +31,7 @@ export function Header(props: HeaderProps) {
             <NavLink to="/about" className="navlink" activeClassName="active">about</NavLink>
           </li>
         </ul>
+
       </nav>
     </header>);
 }
