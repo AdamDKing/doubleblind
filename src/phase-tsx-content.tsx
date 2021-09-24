@@ -1,5 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 import React from 'react';
+import {NavLink} from 'react-router-dom';
 import {PHASES} from './enums';
 
 /** Returns the TSX fragments that make up the content for each phase.
@@ -22,23 +23,8 @@ export function getPhaseTsxContent(phase: PHASES): JSX.Element {
           <p>
             To run a double-blind placebo-controlled experiment,
              you will need to start with some offline work.
-             Guides can be found across the web, but
-             a short rundown follows:
-          </p>
-          <p>
-            You will need to fill two sets of indistinguishable capsules:
-             one set with the substance you are testing
-             (the <em>treatment</em>), the other with some inert
-             substance like sugar (the <em>control</em>, a placebo).
-             This site will then walk you and a helper through the process
-             of filling up a weekly/monthly pill organizer with your capsules,
-             ordered randomly so that neither you nor your helper know
-             which days' capsules contain which substances.
-             To accomplish this, you and your helper will do different parts
-             of the randomization without communcating.
-             At the end of this process, you'll download a key
-             that will let you know the real contents for each capsule --
-             make sure not to check it until your experiment is done.
+             Check the <NavLink to="/guide">guide</NavLink> page above for details,
+             and check the <NavLink to="/about">about</NavLink> page to learn more about the site.
           </p>
           <h3>
             What you will need before proceeding:
@@ -65,7 +51,7 @@ export function getPhaseTsxContent(phase: PHASES): JSX.Element {
             </li>
           </ul>
           <h3>
-            When you're ready to get started, click <em>Next phase</em>
+            When you're ready to start, click <em>Next phase</em>
           </h3>
         </>
       );
@@ -175,10 +161,10 @@ export function getPhaseTsxContent(phase: PHASES): JSX.Element {
           <p>
             Welcome back. You should have filled pill containers in front of you.
              Your helper filled them,
-             now you're going to shuffle them.  At the end, neither you nor your
+             now it is your job to shuffle them.  At the end, neither you nor your
              helper will know which capsules are treatment and which are control.
              In the next phase you'll see a diagram showing you which capsules to swap.
-             You can press space or use the arrow keys to advances steps.
+             You can press space or use the arrow keys to advance steps.
              Be sure to swap the capsules
              in the order provided.
           </p>
@@ -220,9 +206,10 @@ export function getPhaseTsxContent(phase: PHASES): JSX.Element {
             Thanks for using doubleblind.me
           </h1>
           <p>
-            I don't have the feedback form set up yet, since this site doesn't
-             have a real backend. I've just been sharing this site directly with folks
-             for feedback, so send Adam your thoughts/ideas, thanks!
+            I don't have the feedback form set up, since this site doesn't
+             have a real backend just yet. I've just been sharing this site directly with folks
+             for feedback, so either message Adam
+             or send feedback to <code>feedback@doubleblind.me</code>
           </p>
         </>
       );
