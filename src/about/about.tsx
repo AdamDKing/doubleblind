@@ -15,10 +15,10 @@ export function About(props: AboutProps) {
     <h1>About this site</h1>
     <p>
     Doubleblind.me makes it easy to set up and run double-blinded experiments.
-     It exists because its author wanted a similar tool but couldn't find one online (and because the author is a fan of citizen science).
+     It exists because its author wanted a similar tool but couldn't find one online.
      Double-blinding an experiment accounts for the <a href="https://en.wikipedia.org/wiki/Placebo">placebo effect</a> in
-     the result.  Anyone experimenting with substances that may improve their health
-     and well-being should improve their experiments by double-blinding them.
+     the results.  Anyone experimenting with substances that may improve their health
+     and well-being can improve their experiments by double-blinding them.
     </p>
     <p>
      The kind of experiments you can double blind involve substances in opaque capsules and
@@ -33,7 +33,8 @@ export function About(props: AboutProps) {
         </li>
       </ul>
     Ultimately the goal of an experiment is to discover something that works for you, so the assessment should
-     be one that you're comfortable with.  This author is inclined towards written subjective assessments and a number rating, but you should feel free to use more rigorous methods.
+     be one that you're comfortable with.  Examples here use written subjective assessments,
+     but you should feel free to use more rigorous methods.
     </p>
   </div>;
 }
