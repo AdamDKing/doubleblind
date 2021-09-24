@@ -17,7 +17,7 @@ export function Header(props: HeaderProps) {
         double<span>blind</span>.me
       </div>
       <nav>
-        <label htmlFor="navtoggle" className="navtogglelabel unselectable">↕️</label>
+        <label htmlFor="navtoggle" className="navtogglelabel unselectable">nav↕️</label>
         <input id="navtoggle" className="navtoggle" type="checkbox"/>
         <ul>
           <li className="linkli">
