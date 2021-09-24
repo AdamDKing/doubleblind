@@ -55,8 +55,9 @@ export function DblndFlowPhaseTwoBlinding(
         }}>
         {getPhaseTsxContent(PHASES.PHASE_TWO_BLINDING)}
         <p>
-          Swap the pills between the two cells as directed by the arrow.
-           Press space to see the next swap, or use the arrow keys to go forward or backward.
+          Swap the pills between the two cells as directed by the
+           arrow. <em>Press space</em> to see the next swap,
+           or <em>use the arrow keys</em> to go forward or backward.
            Make sure to swap in order.
         </p>
         <h3>
