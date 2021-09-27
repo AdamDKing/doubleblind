@@ -62,7 +62,7 @@ function createShuffleSteps(numCaps: number) : ShuffleStep[] {
  * @param steps shufflesteps to be performed on arr
  * @returns a new, shuffled array
  */
-function runShuffleSteps(arr: PILL[], steps: ShuffleStep[]) : PILL[] {
+export function runShuffleSteps(arr: PILL[], steps: ShuffleStep[]) : PILL[] {
   const out = arr.slice();
   for (const step of steps) {
     const temp = out[step.to];
