@@ -13,20 +13,10 @@
   font-size: large;
   align-self: center;
   justify-self: center;
+  border-color: blue;
+  color: blue;
 
-  &.helperstyle {
-    border-color: darkorange;
-    color: darkorange;
-  }
-  &.helperstyle:hover:enabled {
-    border-color: rgb(167, 92, 1);
-    color: rgb(167, 92, 1);
-  }
-  &.experimenterstyle {
-    border-color: blue;
-    color: blue;
-  }
-  &.experimenterstyle:hover:enabled {
+  &:hover:enabled {
     border-color: darkblue;
     color: darkblue;
   }
