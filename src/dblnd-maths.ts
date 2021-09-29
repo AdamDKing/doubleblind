@@ -7,14 +7,14 @@ import {Dblnd, ShuffleStep} from './interfaces';
  * @param treatmentCount number of treatment capsules
  * @returns Dblnd based on the input counts.  Involves randomness.
  */
-export function generateDblnd(controlCount: number, treatmentCount: number) : Dblnd {
+export function generateDblnd(controlCount: number, treatmentCount: number): Dblnd {
   const tempSchedule = Array(controlCount).fill(PILL.CONTROL).concat(
       Array(treatmentCount).fill(PILL.TREATMENT));
   const helperSchedule = fisherYates(tempSchedule);
   const experimenterSteps = createShuffleSteps(controlCount + treatmentCount);
 
   return {
-    controlPileRight: (Math.random()>0.5) ? true : false,
+    controlPileRight: (Math.random() > 0.5) ? true : false,
     helperSchedule: helperSchedule,
     experimenterSteps: experimenterSteps,
     finalSchedule: runShuffleSteps(helperSchedule, experimenterSteps),
@@ -28,8 +28,8 @@ export function generateDblnd(controlCount: number, treatmentCount: number) : Db
  */
 function fisherYates(arr: PILL[]): PILL[] {
   const out = arr.slice();
-  for (let i=arr.length-1; i >= 0; i--) {
-    const j = Math.floor(Math.random() * (i+1));
+  for (let i = arr.length - 1; i >= 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
 
     const temp = out[i];
     out[i] = out[j];
@@ -42,12 +42,12 @@ function fisherYates(arr: PILL[]): PILL[] {
  * @param numCaps the number of capsules to be shuffled
  * @returns an array of ShuffleSteps describing the shuffling process
 */
-function createShuffleSteps(numCaps: number) : ShuffleStep[] {
-  const out : ShuffleStep[] = [];
-  for (let i=numCaps-1; i >=0; i--) {
+function createShuffleSteps(numCaps: number): ShuffleStep[] {
+  const out: ShuffleStep[] = [];
+  for (let i = numCaps - 1; i >= 0; i--) {
     out.push({
       from: i,
-      to: Math.floor(Math.random() * (i+1)),
+      to: Math.floor(Math.random() * (i + 1)),
     });
   }
   return out;
@@ -62,7 +62,7 @@ function createShuffleSteps(numCaps: number) : ShuffleStep[] {
  * @param steps shufflesteps to be performed on arr
  * @returns a new, shuffled array
  */
-export function runShuffleSteps(arr: PILL[], steps: ShuffleStep[]) : PILL[] {
+export function runShuffleSteps(arr: PILL[], steps: ShuffleStep[]): PILL[] {
   const out = arr.slice();
   for (const step of steps) {
     const temp = out[step.to];
@@ -70,4 +70,28 @@ export function runShuffleSteps(arr: PILL[], steps: ShuffleStep[]) : PILL[] {
     out[step.from] = temp;
   }
   return out;
+}
+
+/** Produces a schedule that consists of "runs" of the treatment
+ *
+ * This method requires the treatment and control have the same number of pills
+ * and has a <= runLen period at the beginning and end that consists of control
+ * @param runLen length of a run of the same type of pill
+ * @param numRuns number of runs of treatment
+ * @returns schedule of runs
+ */
+export function produceAdvancedSchedule(runLen: number, numRuns: number) {
+  const short = fisherYates(
+      Array(numRuns).fill(PILL.TREATMENT).concat(Array(numRuns - 1).fill(PILL.CONTROL)),
+  );
+  const temp = short.map((v) => Array(runLen).fill(v)).reduce((x, y) => x.concat(y));
+  // distribute runLen control pills randomly across beginning and end
+  for (let i=0; i < runLen; i++) {
+    if (Math.random() < 0.5) {
+      temp.push(PILL.CONTROL);
+    } else {
+      temp.unshift(PILL.CONTROL);
+    }
+  }
+  return temp;
 }
