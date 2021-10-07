@@ -26,7 +26,7 @@ export function generateDblnd(controlCount: number, treatmentCount: number): Dbl
  * @param arr input array to shuffle
  * @returns a new output array, shuffled
  */
-function fisherYates(arr: PILL[]): PILL[] {
+export function fisherYates(arr: PILL[]): PILL[] {
   const out = arr.slice();
   for (let i = arr.length - 1; i >= 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));

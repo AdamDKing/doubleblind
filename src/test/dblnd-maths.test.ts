@@ -1,4 +1,4 @@
-import {runShuffleSteps} from '../dblnd-maths';
+import {fisherYates, runShuffleSteps} from '../dblnd-maths';
 import {PILL} from '../enums';
 
 export {};
@@ -12,3 +12,18 @@ test('swap halves of array', () => {
             PILL.CONTROL, PILL.CONTROL, PILL.CONTROL]);
 })
 ;
+
+test('fixed random value of 0.99 shuffles to current position', () => {
+  Math.random = jest.fn(() => 0.99);
+  const arr = [PILL.TREATMENT, PILL.CONTROL, PILL.CONTROL, PILL.TREATMENT, PILL.TREATMENT];
+  expect(fisherYates(arr)).toEqual(arr);
+});
+
+test('fixed random value of 0.01 shuffles to left rotation by 1', () => {
+  Math.random = jest.fn(() => 0.01);
+  const arr = [PILL.TREATMENT, PILL.CONTROL, PILL.CONTROL, PILL.TREATMENT, PILL.TREATMENT];
+  const arrShiftedLeft = arr.slice(1).concat(arr[0]);
+  expect(fisherYates(arr)).toEqual(arrShiftedLeft);
+});
+
+
