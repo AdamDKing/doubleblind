@@ -14,6 +14,8 @@ interface DblndFlowPhaseGetDetailsProps {
 
 interface FormValues {
   nameOfExperiment: string;
+  useRuns: boolean;
+  runLength: number;
   controlCount: number;
   treatmentCount: number;
   pillContainerSize: number;
@@ -38,6 +40,8 @@ export function DblndFlowPhaseGetDetails(props: DblndFlowPhaseGetDetailsProps): 
   const [pcSize, setPcSize] = useState(7);
   const [numTreatment, setNumTreatment] = useState(10);
   const [numControl, setNumControl] = useState(10);
+  const [useRuns, setUseRuns] = useState(false);
+  const [runLength, setRunLength] = useState(4);
   const [validated, setValidated] = useState(true);
 
   return (
@@ -49,12 +53,30 @@ export function DblndFlowPhaseGetDetails(props: DblndFlowPhaseGetDetailsProps): 
         <Formik
           initialValues={{
             nameOfExperiment: 'My Experiment',
+            useRuns: false,
+            runLength: 4,
             controlCount: 10,
             treatmentCount: 10,
             pillContainerSize: 7,
+
           }}
           validate={(values: FormValues) => {
             const errors: any = {};
+            setUseRuns(values.useRuns);
+            if (values.useRuns) {
+              // The error checking logic is substantial here,
+              // so we start with errors and end with success
+              if (values.runLength <= 1) {
+                errors.runLength = 'Must be larger than 1';
+              } else if (values.runLength > values.controlCount) {
+                errors.runLength = 'Must be less than treatment/control count';
+              } else if (values.controlCount % values.runLength !== 0) {
+                errors.runLength = 'Run length must evenly divide count';
+              } else {
+                setRunLength(values.runLength);
+              }
+              values.treatmentCount = values.controlCount;
+            }
             if (values.controlCount > 0 && values.controlCount < 101) {
               setNumControl(values.controlCount);
             } else if (values.controlCount <= 0) {
@@ -96,13 +118,21 @@ export function DblndFlowPhaseGetDetails(props: DblndFlowPhaseGetDetailsProps): 
                 <Field id="nameOfExperiment" name="nameOfExperiment" />
                 <ErrorMessage name="nameOfExperiment" component="div" className="formerror" />
               </label>
+              <label htmlFor="useRuns"><span>Use Runs?</span>
+                <Field id="useRuns" name="useRuns" type="checkbox"/>
+                <ErrorMessage name="useRuns" component="div" className="formerror" />
+              </label>
+              <label htmlFor="runLength"><span hidden={!useRuns}>Run Length</span>
+                <Field id="runLength" name="runLength" hidden={!useRuns} />
+                <ErrorMessage name="runLength" component="div" className="formerror" />
+              </label>
               <label htmlFor="controlCount"><span>Number of Control Pills</span>
                 <Field id="controlCount" name="controlCount"
                   type="number" />
                 <ErrorMessage name="controlCount" component="div" className="formerror" />
               </label>
               <label htmlFor="treatmentCount"><span>Number of Treatment Pills</span>
-                <Field id="treatmentCount" name="treatmentCount"
+                <Field id="treatmentCount" name="treatmentCount" disabled={useRuns}
                   type="number" />
                 <ErrorMessage name="treatmentCount" component="div" className="formerror" />
               </label>
@@ -126,6 +156,7 @@ export function DblndFlowPhaseGetDetails(props: DblndFlowPhaseGetDetailsProps): 
         stop={!validated}
         onclick={() => {
           if (validated) {
+            console.log(`run length: ${runLength}`);
             next(<DblndFlowPhaseArrangeWorkspace
               dblnd={generateDblnd(numControl, numTreatment)}
               pcSize={pcSize}/>);
