@@ -21,6 +21,26 @@ export function generateDblnd(controlCount: number, treatmentCount: number): Dbl
   };
 }
 
+/** Generates a Dblnd using runs of pills, instead of uniform random order
+ *
+ * @param controlCount count of control (assumed same as treatment)
+ * @param runLen length of run of pills
+ * @returns Dblnd
+ */
+export function generateRunsDblnd(controlCount: number, runLen: number): Dblnd {
+  const tempSchedule = Array(controlCount).fill(PILL.CONTROL).concat(
+      Array(controlCount).fill(PILL.TREATMENT));
+  const helperSchedule = fisherYates(tempSchedule);
+  const finalSchedule = produceAdvancedSchedule(runLen, (controlCount / runLen));
+  const experimenterSteps = createTargetedShuffleSteps(helperSchedule, finalSchedule);
+  return {
+    controlPileRight: (Math.random() > 0.5) ? true : false,
+    helperSchedule: helperSchedule,
+    experimenterSteps: experimenterSteps,
+    finalSchedule: finalSchedule,
+  };
+}
+
 /** Impurely shuffles an array using the fisher-yates shuffle
  *
  * @param arr input array to shuffle
@@ -49,6 +69,55 @@ function createShuffleSteps(numCaps: number): ShuffleStep[] {
       from: i,
       to: Math.floor(Math.random() * (i + 1)),
     });
+  }
+  return out;
+}
+
+/** Creates ShuffleSteps that have the experimenter reach an input targer PILL[]
+ *
+ * This function exists to support the creation of ShuffleStep[] that arrive
+ * at a pre-specified array, instead of randomizing an array.  The current
+ * implementation swaps every single pill, picking at random any of the
+ * pills of the desired type.  This implementation is probably a bad
+ * idea if the number of pills of control and treatment are not the same.
+ * TBH I'm not sure how to convince myself on this -- going to ask for help
+ * The code here could be simpler, I'm sure.
+ *
+ * @param start Starting array of pills
+ * @param target Target array of pills
+ * @returns ShuffleStep[] that turns start into target
+ */
+export function createTargetedShuffleSteps(start: PILL[], target: PILL[]) {
+  const out: ShuffleStep[] = [];
+  const locs: {[PILL.TREATMENT]: number[], [PILL.CONTROL]: number[]} = {
+    [PILL.TREATMENT]: start
+        .map((p, i): [PILL, number] => [p, i])
+        .filter((pi) => pi[0] === PILL.TREATMENT)
+        .map((pi) => pi[1]),
+    [PILL.CONTROL]: start
+        .map((p, i): [PILL, number] => [p, i])
+        .filter((pi) => pi[0] === PILL.CONTROL)
+        .map((pi) => pi[1]),
+  };
+  let i=0;
+  for (const p of target) {
+    const locsI = Math.floor(Math.random()*locs[p].length);
+    out.push({
+      from: locs[p][locsI],
+      to: i,
+    });
+    // now we just need to adjust locs to account for the swap
+    // if locs[p] includes i, then locs[p] has both i and locs[p][locsI]
+    // and we're done.
+    if (!locs[p].includes(i)) {
+      const swapFrom = locs[p].splice(locsI, 1)[0];
+      locs[p].push(i);
+      const notP = p === PILL.TREATMENT ? PILL.CONTROL : PILL.TREATMENT;
+      locs[notP] = locs[notP].filter((e) => e !== i);
+      locs[notP].push(swapFrom);
+    }
+
+    i++;
   }
   return out;
 }
@@ -84,7 +153,9 @@ export function produceAdvancedSchedule(runLen: number, numRuns: number) {
   const short = fisherYates(
       Array(numRuns).fill(PILL.TREATMENT).concat(Array(numRuns - 1).fill(PILL.CONTROL)),
   );
-  const temp = short.map((v) => Array(runLen).fill(v)).reduce((x, y) => x.concat(y));
+  const temp = short.map((v) => Array(runLen).fill(v)).reduce((x, y) => {
+    return x.concat(y);
+  });
   // distribute runLen control pills randomly across beginning and end
   for (let i=0; i < runLen; i++) {
     if (Math.random() < 0.5) {
@@ -93,5 +164,8 @@ export function produceAdvancedSchedule(runLen: number, numRuns: number) {
       temp.unshift(PILL.CONTROL);
     }
   }
+  console.log(temp);
   return temp;
 }
+
+

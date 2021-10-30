@@ -3,7 +3,7 @@ import React, {useContext, useEffect, useState} from 'react';
 import {phaseContext} from '../App';
 import {BackButton} from '../shared-components/back-button';
 import {DblndFlowPhaseArrangeWorkspace} from './dblnd-flow-phase-arrange-workspace';
-import {generateDblnd} from '../dblnd-maths';
+import {generateDblnd, generateRunsDblnd} from '../dblnd-maths';
 import {PHASES} from '../enums';
 import {ForwardButton} from '../shared-components/forward-button';
 import {getPhaseTsxContent} from '../phase-tsx-content';
@@ -123,7 +123,8 @@ export function DblndFlowPhaseGetDetails(props: DblndFlowPhaseGetDetailsProps): 
                 <ErrorMessage name="useRuns" component="div" className="formerror" />
               </label>
               <label htmlFor="runLength"><span hidden={!useRuns}>Run Length</span>
-                <Field id="runLength" name="runLength" hidden={!useRuns} />
+                <Field id="runLength" name="runLength" hidden={!useRuns}
+                  type="number" />
                 <ErrorMessage name="runLength" component="div" className="formerror" />
               </label>
               <label htmlFor="controlCount"><span>Number of Control Pills</span>
@@ -156,10 +157,15 @@ export function DblndFlowPhaseGetDetails(props: DblndFlowPhaseGetDetailsProps): 
         stop={!validated}
         onclick={() => {
           if (validated) {
-            console.log(`run length: ${runLength}`);
-            next(<DblndFlowPhaseArrangeWorkspace
-              dblnd={generateDblnd(numControl, numTreatment)}
-              pcSize={pcSize}/>);
+            if (useRuns) {
+              next(<DblndFlowPhaseArrangeWorkspace
+                dblnd={generateRunsDblnd(numControl, runLength)}
+                pcSize={pcSize}/>);
+            } else {
+              next(<DblndFlowPhaseArrangeWorkspace
+                dblnd={generateDblnd(numControl, numTreatment)}
+                pcSize={pcSize}/>);
+            }
           }
         }} />
 
