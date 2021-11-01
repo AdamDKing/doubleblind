@@ -111,10 +111,11 @@ export function createTargetedShuffleSteps(start: PILL[], target: PILL[]) {
     // and we're done.
     if (!locs[p].includes(i)) {
       const swapFrom = locs[p].splice(locsI, 1)[0];
-      locs[p].push(i);
       const notP = p === PILL.TREATMENT ? PILL.CONTROL : PILL.TREATMENT;
       locs[notP] = locs[notP].filter((e) => e !== i);
       locs[notP].push(swapFrom);
+    } else {
+      locs[p] = locs[p].filter((e) => e !== i);
     }
 
     i++;
