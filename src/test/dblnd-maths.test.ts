@@ -1,3 +1,4 @@
+import seedrandom from 'seedrandom';
 import {createTargetedShuffleSteps, fisherYates, runShuffleSteps} from '../dblnd-maths';
 import {PILL} from '../enums';
 const C = PILL.CONTROL;
@@ -8,8 +9,8 @@ export {};
 describe('creating arrays and shufflesteps with runs', () => {
   // test produceAdvancedSchedule createTargetedShuffleSteps
   test('start and (different) final of length 2 swaps those 2', () => {
-    const start = [PILL.TREATMENT, PILL.CONTROL];
-    const final = [PILL.CONTROL, PILL.TREATMENT];
+    const start = [T, C];
+    const final = [C, T];
     const ss = createTargetedShuffleSteps(start, final);
     expect(ss[0].from + ss[0].to).toEqual(1);
   });
@@ -27,20 +28,19 @@ describe('creating arrays and shufflesteps with runs', () => {
   });
 
   test('createTargettedShuffleSteps is correct according to runShuffleSteps', () => {
+    seedrandom('Hello', {global: true});
     const start = [T, T, C, C, T, C, C, C, T, C, T, T];
     const final = [C, T, C, T, T, T, T, C, C, T, C, C];
     const ss = createTargetedShuffleSteps(start, final);
+    console.log(ss);
     expect(final).toEqual(runShuffleSteps(start, ss));
   });
 });
 
 test('swap halves of array', () => {
-  expect(runShuffleSteps(
-      [PILL.CONTROL, PILL.CONTROL, PILL.CONTROL, PILL.TREATMENT, PILL.TREATMENT, PILL.TREATMENT],
+  expect(runShuffleSteps([C, C, C, T, T, T],
       [{from: 0, to: 5}, {from: 2, to: 4}, {from: 1, to: 3}]))
-      .toEqual(
-          [PILL.TREATMENT, PILL.TREATMENT, PILL.TREATMENT,
-            PILL.CONTROL, PILL.CONTROL, PILL.CONTROL]);
+      .toEqual([T, T, T, C, C, C]);
 })
 ;
 

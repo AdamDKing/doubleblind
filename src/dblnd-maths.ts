@@ -73,7 +73,7 @@ function createShuffleSteps(numCaps: number): ShuffleStep[] {
   return out;
 }
 
-/** Creates ShuffleSteps that have the experimenter reach an input targer PILL[]
+/** Creates ShuffleSteps that have the experimenter reach an input target PILL[]
  *
  * This function exists to support the creation of ShuffleStep[] that arrive
  * at a pre-specified array, instead of randomizing an array.  The current
